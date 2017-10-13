@@ -11,7 +11,7 @@ public class DriverClass {
 
         Student s1, s2, s3, s4, s5, s6, s7, s8;
         Module m1, m2, m3, m4;
-        CourseProgramme c;
+        CourseProgramme c1, c2;
 
         s1 = new Student("Carl", "21/07/1996", 12345);
         s2 = new Student("Ruairi", "19/05/1994", 17594);
@@ -23,40 +23,52 @@ public class DriverClass {
         s8 = new Student("Eoghan", "16/06/1995", 10429);
 
         List<Student> mod1 = new ArrayList<Student>();
-        mod1.add(s1); mod1.add(s2); mod1.add(s3); mod1.add(s4); mod1.add(s7);
+        mod1.add(s1); mod1.add(s2); mod1.add(s3); mod1.add(s4);
+        mod1.add(s5); mod1.add(s6); mod1.add(s7); mod1.add(s8);
 
         List<Student> mod2 = new ArrayList<Student>();
-        mod2.add(s2); mod2.add(s4); mod2.add(s6); mod2.add(s8); mod2.add(s1);
+        mod2.add(s1); mod2.add(s2); mod2.add(s3); mod2.add(s4);
+        mod2.add(s5); mod2.add(s6); mod2.add(s7); mod2.add(s8);
 
         List<Student> mod3 = new ArrayList<Student>();
-        mod3.add(s5); mod3.add(s6); mod3.add(s7); mod3.add(s8); mod3.add(s3);
+        mod3.add(s6); mod3.add(s7); mod3.add(s8);
 
         List<Student> mod4 = new ArrayList<Student>();
-        mod4.add(s1); mod4.add(s3); mod4.add(s5); mod4.add(s7); mod4.add(s8);
+        mod4.add(s1); mod4.add(s2); mod4.add(s3); mod4.add(s4); mod4.add(s5);
 
         m1 = new Module("Programming","CT145", mod1);
         m2 = new Module("Telecommunications", "EE243", mod2);
         m3 = new Module("Machine Learning", "CT475", mod3);
         m4 = new Module("System on Chip", "EE285", mod4);
 
-        List<Module> course = new ArrayList<Module>();
-        course.add(m1); course.add(m2); course.add(m3); course.add(m4);
+        List<Module> ECE = new ArrayList<Module>();
+        ECE.add(m1); ECE.add(m2); ECE.add(m4);
 
-        c = new CourseProgramme("4BP1", course, "04/09/2017", "18/05/2018");
+        List<Module> CSIT = new ArrayList<Module>();
+        CSIT.add(m1); CSIT.add(m2); CSIT.add(m3);
 
-        List<Student> students = new ArrayList<Student>();
+        c1 = new CourseProgramme("ECE", ECE, "04/09/2017", "18/05/2018");
+        c2 = new CourseProgramme("CSIT", CSIT, "04/09/2017", "18/05/2018");
 
-        for (Student s : c.getStudents()) {
+        List<CourseProgramme> courses = new ArrayList<CourseProgramme>();
+        courses.add(c1); courses.add(c2);
 
-            System.out.println("Name  :   " + s.getName());
-            System.out.print("Modules  :   ");
-            for (Module m: s.getModules()) {
-                System.out.print(m.getName() + " | ");
+        System.out.println("Running test...");
+
+        for (CourseProgramme c : courses) {
+
+            for (Student s : c.getStudents()) {
+
+                System.out.println("Name  :   " + s.getName());
+                System.out.print("Modules  :   ");
+                for (Module m : s.getModules()) {
+                    System.out.print(m.getName() + " | ");
+                }
+                System.out.println("\nCourse  :   " + s.getCourse().getName() + "\n");
             }
-            System.out.println("\nCourse  :   " + s.getCourse().getName() + "\n");
-
         }
-
     }
+
 }
+
 
